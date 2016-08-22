@@ -4,3 +4,4 @@
 /.settings/*
 *.md
 *.class
+/target/
