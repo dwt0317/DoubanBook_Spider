@@ -1,5 +1,6 @@
-/target/
+﻿/target/*
 *.db
 .project
-/.settings/
+/.settings/*
 *.md
+*.class
