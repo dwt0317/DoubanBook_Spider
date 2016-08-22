@@ -25,7 +25,7 @@ public class CustomPipeline implements Pipeline, Closeable{
 		this.dirPath = dirPath;
 		count = new AtomicLong(0L);
 		fileIndex = 0L;
-		path = this.dirPath + "/"+ fileIndex ;
+		path = this.dirPath + "/"+ fileIndex + ".db" ;
 		try {
 			bw = new BufferedWriter(new FileWriter(path));
 		} catch (IOException e) {
@@ -41,7 +41,7 @@ public class CustomPipeline implements Pipeline, Closeable{
 		if(fileIndex < count.getAndIncrement()/Constants.fileRecordNum){
 			try {
 				bw.close();
-				path = this.dirPath + "/"+ (++fileIndex) ;
+				path = this.dirPath + "/"+ (++fileIndex) +".db" ;
 				bw = new BufferedWriter(new FileWriter(path));
 				
 			} catch (IOException e) {
