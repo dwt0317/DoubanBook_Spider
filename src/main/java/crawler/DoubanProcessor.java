@@ -31,6 +31,7 @@ public class DoubanProcessor implements PageProcessor {
                 page.setSkip(true);
             }else{
             	page.putField("info", page.getHtml().xpath("//div[@class='intro']/allText()"));
+            	page.putField("url",page.getUrl().toString());
             }
     	}
     	     
