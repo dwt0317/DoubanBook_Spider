@@ -10,17 +10,19 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 public class DoubanProcessor implements PageProcessor {
 
-	
+	private int bookCount = 0;
 	private Site site = Site.me().setRetryTimes(3).setSleepTime(Constants.sleepTime);
 
     public void process(Page page) {
+    	String url = "https://book.douban.com/tag/小说?start="+(this.bookCount)+"&type=T";
     	List<String> contentPages = page.getHtml().xpath("//div[@class='paginator']").links().all();
  	
     	//目录页
-    	if(contentPages.size()!=0){
+    	if(!contentPages.isEmpty()){
     		page.setSkip(true);		
     		page.addTargetRequests(page.getHtml().xpath("//div[@class='info']/h2").links().all());
-    		page.addTargetRequests(contentPages);
+    		page.addTargetRequest(url);
+    		this.bookCount+=20;
     	}
     	//内容页
     	else{
