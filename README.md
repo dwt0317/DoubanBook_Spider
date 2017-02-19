@@ -1,1 +1,1 @@
-A crawler for douban book based on WebMagic
+A spider for douban book based on WebMagic
